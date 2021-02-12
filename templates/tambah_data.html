@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+ 
+{% block content %}  
+
+<div class="container" style="padding-top: 25px;">
+
+  {% if success %}
+    <div class="success">
+      <p>{{ success }}</p> <span class="close">&times;</span>
+    </div>
+  {% endif %}  
+
+  <div class="panel important">
+    <h2>Tambah Data Aturan Chatbot</h2>
+    <ul>
+      <li>Silahkan tambah data yang nantinya akan menjadi jawaban dari pertanyaan pengguna</li>
+    </ul>
+  </div>
+  
+  <div class="panel important">
+    <h2>Write a post</h2>
+      <form action="/proses_tambah_data" method="POST">
+        <div class="col-sm-8">
+          Jawaban:<br/>
+          <!-- <input type="text" name="teks_baru" size="40"/> -->
+          <textarea name="teks_baru" class="form-control" rows="10"></textarea>
+          <br/><br/>  
+        </div>
+        <div class="col-sm-4">
+          <input type="submit" name="submit" value="Save" class="btn btn-primary" />
+        </div>
+        </div>
+      </form>
+  </div>
+
+
+</div>
+
+<script>
+var closebtns = document.getElementsByClassName("close");
+var i;
+
+for (i = 0; i < closebtns.length; i++) {
+  closebtns[i].addEventListener("click", function() {
+    this.parentElement.style.display = 'none';
+  });
+}
+</script>
+{% endblock %}

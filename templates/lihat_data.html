@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+ 
+{% block content %}  
+
+<style type="text/css">
+  .btn{
+    color: #fff;
+  }
+  table {
+   counter-reset: rowNumber;
+  }
+
+  table tr:not(:first-child) {
+    counter-increment: rowNumber;
+  }
+
+  table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+  }
+
+</style>
+
+<div class="container">
+
+  {% if success %}
+    <div class="success">
+      <p>{{ success }}</p> <span class="close">&times;</span>
+    </div>
+  {% endif %}  
+
+  <div class="panel important" style="margin-top:100px;">
+    <h2>Data Respon Chatbot</h2>
+    <ul>
+      <li>Basis pengetahuan dari tugubot, anda dapat menambahkan dengan mengakses menu tambah aturan</li>
+    </ul>
+  </div>
+
+  <div class="table-responsive">
+  <div class="panel important">
+    <table class="table table-stripped">
+      <tr>
+      <th>No.</th>
+      <th style="width: 65em;">pertanyaan</th>
+      <th>action</th>
+      </tr>
+    {% for i in var %}
+      <tr>
+        <td></td>
+        <td>{{i}}</td>
+        <td>
+          <a class='btn btn-warning' href="/update/{{i}}">Update </a>
+          <a class='btn btn-primary' href="/hapus_data/{{i}}">Hapus</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </table>
+  </div>
+  </div>
+
+</div>
+
+<script>
+var closebtns = document.getElementsByClassName("close");
+var i;
+
+for (i = 0; i < closebtns.length; i++) {
+  closebtns[i].addEventListener("click", function() {
+    this.parentElement.style.display = 'none';
+  });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TuguBot Admin</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/bootstrap.min.css')}}">
+</head>
+<body>
+<header role="banner">
+  <!-- <img src="{{url_for('static', filename='img/Chatbot Logo.png')}}" class="logo"> -->
+  <h1>TuguBot Panel</h1>
+  <ul class="utilities">
+    <br>
+    <li class="users"><a href="#">My Account</a></li>
+    <li class="logout warn"><a href="/admin">Log Out</a></li>
+  </ul>
+</header>
+
+<nav role='navigation'>
+  <ul class="main">
+    <li class="dashboard"><a href="/login">Dashboard</a></li>
+    <li class="edit"><a href="/lihat_data">Lihat Perintah</a></li>
+    <li class="write"><a href="/tambah_data">Tambah Perintah</a></li>
+  </ul>
+</nav>
+
+<main role="main">
+
+{% block content %}{% endblock %}
+
+</main>
+
+</body>
+</html>
